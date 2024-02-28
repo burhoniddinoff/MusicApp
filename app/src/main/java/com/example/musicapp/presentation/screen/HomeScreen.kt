@@ -5,10 +5,11 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.musicapp.Constants
@@ -66,14 +67,15 @@ class HomeScreen : Fragment(R.layout.screen_home) {
 
     private fun setUpRecycler() {
         adapter = MusicAdapter()
+
         binding.rvSongList.adapter = adapter
         binding.rvSongList.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvSongList.setHasFixedSize(true)
+        binding.rvSongList.addItemDecoration(object : DividerItemDecoration(activity, LinearLayout.VERTICAL) {})
 
         adapter.submitList(musicDataList)
+        musicDataList.clear()
 
-        adapter.onClick = {
-            findNavController().navigate(HomeScreenDirections.actionHomeScreenToPlayMusic(it))
-        }
     }
 
     private fun checkUserPermissions() {

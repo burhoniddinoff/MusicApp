@@ -2,11 +2,13 @@ package com.example.musicapp.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicapp.databinding.ItemMusicBinding
 import com.example.musicapp.model.MusicData
+import com.example.musicapp.presentation.screen.HomeScreenDirections
 
 class MusicAdapter : ListAdapter<MusicData, MusicAdapter.InnerHolder>(InnerDiffUtil) {
 
@@ -24,13 +26,10 @@ class MusicAdapter : ListAdapter<MusicData, MusicAdapter.InnerHolder>(InnerDiffU
                 tvOrder.text = "${pos.plus(1)}"
             }
 
-        }
-
-        init {
             binding.root.setOnClickListener {
-                onClick?.invoke(getItem(adapterPosition))
-
+                it.findNavController().navigate(HomeScreenDirections.actionHomeScreenToPlayMusic(song))
             }
+
         }
 
     }
