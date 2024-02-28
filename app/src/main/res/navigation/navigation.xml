@@ -8,6 +8,23 @@
     <fragment
         android:id="@+id/homeScreen"
         android:name="com.example.musicapp.presentation.screen.HomeScreen"
-        tools:layout="@layout/screen_home"
-        android:label="HomeScreen" />
+        android:label="HomeScreen"
+        tools:layout="@layout/screen_home">
+        <action
+            android:id="@+id/action_homeScreen_to_playMusic"
+            app:destination="@id/playMusic" />
+    </fragment>
+    <fragment
+        android:id="@+id/playMusic"
+        android:name="com.example.musicapp.presentation.screen.PlayMusic"
+        android:label="PlayMusic"
+        tools:layout="@layout/screen_play_music">
+        <action
+            android:id="@+id/action_playMusic_to_homeScreen"
+            app:destination="@id/homeScreen" />
+        <argument
+            android:name="data"
+            app:argType="com.example.musicapp.model.MusicData" />
+    </fragment>
+
 </navigation>

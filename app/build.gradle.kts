@@ -78,4 +78,8 @@ dependencies {
      */
     implementation("com.google.dagger:hilt-android:2.48")
     ksp("com.google.dagger:hilt-compiler:2.48")
+
+
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
 }
