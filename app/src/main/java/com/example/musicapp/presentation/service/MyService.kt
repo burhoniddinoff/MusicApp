@@ -22,10 +22,10 @@ class MyService : Service() {
 
         mediaPlayer = MediaPlayer.create(this, R.raw.turk_music_1)
         notification = NotificationCompat
-            .Builder(this, "test")
+            .Builder(this, "test123")
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentText("Hello bro")
             .setContentTitle("What's up!")
+            .setContentText("Hello bro")
             .build()
 
         makeChannel()
@@ -35,7 +35,7 @@ class MyService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         mediaPlayer.start()
         startForeground(1, notification)
-        return super.onStartCommand(intent, flags, startId)
+        return START_STICKY
     }
 
     override fun onDestroy() {
